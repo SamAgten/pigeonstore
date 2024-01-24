@@ -1,0 +1,25 @@
+{%extends "layout.html"%}
+
+{% block content %}
+
+
+<div class="login-container container-fluid">
+    
+<form action="#" method="post">
+    <h3 align="center">Login</h3>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" class="form-control" placeholder="Email"/>
+        <br />
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder=""/>
+        <br />
+        <div align="center">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </div>
+</form>
+
+</div>
+{% endblock %}

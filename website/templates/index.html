@@ -1,0 +1,49 @@
+{%extends "layout.html"%}
+
+{% block content %}
+
+
+<div class="row">
+
+    <div align="center" class="coins-left">
+        <h2>Pigeon coins left: {{user.pigeon_coins}}</h2>
+    </div>
+
+</div>
+<div class="row">
+
+    {% if pigeons %}
+    {% for pigeon in pigeons %}
+
+        {% if (loop.index-1) % 2 == 0 %}
+        <div class="col">
+        {% endif %}
+
+        <div class="card">
+            <p class="card-number">{{pigeon.number}}</p>
+            <img src="{{ url_for('static', filename='Pigeon.png') }}" />
+            <h3>{{pigeon.name}}</h3>
+            <div class="card-banner">
+                {{pigeon.name}}
+            </div>
+            <p class="card-description">{{pigeon.info}}</p>
+            <div class="pigeon-price">
+                <p>€{{pigeon.price}}</p>
+                <form action="/api" method="post">
+                    
+                    <input type="hidden" id="request" name="request" value="order" />
+                    <input type="hidden" id="pigeon" name="pigeon" value= "{{pigeon.id}}" />
+                    <button type="submit" class="buy-pigeon btn btn-secondary">Buy</button>
+                </form>
+            </div>
+        </div>
+
+        {% if loop.index % 2 == 0 %}
+        </div>
+        {% endif %}
+
+    {% endfor %}
+    {% endif %}
+
+</div>
+{% endblock %}

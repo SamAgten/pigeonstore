@@ -1,0 +1,41 @@
+{%extends "layout.html"%}
+
+{% block content %}
+
+
+{% if orders %}
+
+
+{% for order, pigeon in orders %}
+<div class="row">
+
+    <div class="card-order">
+        <p>Order for 1x {{pigeon.name}} (€{{pigeon.price}})</p>
+
+        <form action="/api" method="post">
+                    
+            <input type="hidden" id="request" name="request" value="cancel" />
+            <input type="hidden" id="order" name="order" value= "{{order.id}}" />
+            <button type="submit" class="buy-pigeon btn btn-secondary">Delete</button>
+        </form>
+    </div>
+
+    
+
+</div>
+{% endfor %}
+
+
+{%else%}
+
+
+<div class="row">
+
+    <div align="center" class="coins-left">
+        <h2>No orders yet. Click on a pigeon to order one.</h2>
+    </div>
+
+</div>
+{% endif %}
+
+{% endblock %}
